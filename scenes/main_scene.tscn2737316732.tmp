@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtpln8te1f4jw"]
+
+[ext_resource type="Texture2D" uid="uid://dlavljuvdrytf" path="res://assets/d3a0e88012e649e2ac76802e483c0339_0_1769447701_6929.png" id="1_w2twt"]
+[ext_resource type="Texture2D" uid="uid://rf1xa1psmj3b" path="res://assets/photo-to-pixel_2_-removebg-preview.png" id="2_pw63i"]
+[ext_resource type="Texture2D" uid="uid://usbudws7unhh" path="res://assets/photo-to-pixel-removebg-preview.png" id="3_7ykc4"]
+[ext_resource type="Texture2D" uid="uid://ef2g4b0agvoa" path="res://assets/photo-to-pixel_1_-removebg-preview.png" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://lamok2vyr1t7" path="res://scenes/shotgun_pickup.tscn" id="5_gubc5"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="shotgun_pickup" parent="." instance=ExtResource("5_gubc5")]
+top_level = true
+position = Vector2(522, 436)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer"]
+position = Vector2(592, 607)
+scale = Vector2(0.8779297, 0.92089844)
+texture = ExtResource("1_w2twt")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+top_level = true
+position = Vector2(912, 425.00003)
+scale = Vector2(0.5249648, 0.56244916)
+texture = ExtResource("2_pw63i")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+top_level = true
+position = Vector2(305, 374)
+scale = Vector2(0.38701713, 0.40228003)
+texture = ExtResource("3_7ykc4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+top_level = true
+position = Vector2(756, 447.99994)
+scale = Vector2(0.33619156, 0.34742686)
+texture = ExtResource("4_pu3yx")
+
+[node name="player" type="Camera2D" parent="."]
+position = Vector2(578, 321)
+ignore_rotation = false
