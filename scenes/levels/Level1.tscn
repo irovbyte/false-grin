@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://dtpln8te1f4jw"]
+
+[ext_resource type="Texture2D" uid="uid://355wsgj13pcn" path="res://assets/sprites/ui/side_frame.png" id="1_1pwbc"]
+[ext_resource type="Texture2D" uid="uid://dj1c8jvlclrag" path="res://assets/sprites/ui/heart_icon.png" id="2_j08sa"]
+[ext_resource type="Texture2D" uid="uid://bfo72fed0vqac" path="res://assets/sprites/menu/mask_face.png" id="2_lha2r"]
+[ext_resource type="Texture2D" uid="uid://d1m2f0as27gyp" path="res://assets/sprites/ui/player.png" id="3_68ib6"]
+[ext_resource type="Texture2D" uid="uid://dahfe3k1udutk" path="res://assets/sprites/ui/ammo_tray.png" id="5_76cw8"]
+[ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/shotgun_fps.png" id="6_m00rq"]
+[ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/sprites/ui/weapons/shotgun_side.png" id="7_m00rq"]
+
+[sub_resource type="GDScript" id="GDScript_gckpv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m00rq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"aim_enemy",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"aim_self",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m00rq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brv20"]
+
+[node name="Level1" type="Node2D" unique_id=751449340]
+script = SubResource("GDScript_gckpv")
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=355615279]
+
+[node name="FrameLeft" type="TextureRect" parent="GameUI" unique_id=1053934826]
+anchors_preset = -1
+anchor_right = 0.13700001
+anchor_bottom = 0.120000005
+offset_right = -0.090667725
+offset_bottom = 0.23999786
+texture = ExtResource("1_1pwbc")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerHP" type="HBoxContainer" parent="GameUI/FrameLeft" unique_id=564573505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.158
+anchor_top = 0.192
+anchor_right = 0.818
+anchor_bottom = 0.82100004
+offset_left = 0.07813072
+offset_top = 0.024000168
+offset_right = -0.025878906
+offset_bottom = 0.961998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="heart_icon" type="TextureRect" parent="GameUI/FrameLeft/PlayerHP" unique_id=876204444]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_j08sa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="heart_icon2" type="TextureRect" parent="GameUI/FrameLeft/PlayerHP" unique_id=2047416806]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_j08sa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Player" type="Sprite2D" parent="GameUI/FrameLeft" unique_id=1674930331]
+position = Vector2(198.00002, 39)
+scale = Vector2(0.038330063, 0.038330063)
+texture = ExtResource("3_68ib6")
+
+[node name="FrameRight" type="TextureRect" parent="GameUI" unique_id=1081991357]
+anchors_preset = -1
+anchor_left = 0.86100006
+anchor_right = 1.0
+anchor_bottom = 0.120000005
+offset_left = 0.12792969
+offset_right = -2.2666016
+offset_bottom = 0.23999786
+size_flags_horizontal = 8
+texture = ExtResource("1_1pwbc")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyHP" type="HBoxContainer" parent="GameUI/FrameRight" unique_id=1320014203]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.192
+anchor_right = 0.82400006
+anchor_bottom = 0.82100004
+offset_left = -0.02601242
+offset_top = 0.024000168
+offset_right = 0.027664185
+offset_bottom = 0.961998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="heart_icon" type="TextureRect" parent="GameUI/FrameRight/EnemyHP" unique_id=1694411596]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_j08sa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="heart_icon2" type="TextureRect" parent="GameUI/FrameRight/EnemyHP" unique_id=450969204]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_j08sa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MaskFace" type="Sprite2D" parent="GameUI/FrameRight" unique_id=1270881310]
+position = Vector2(-30.00003, 39)
+scale = Vector2(0.08300789, 0.08300789)
+texture = ExtResource("2_lha2r")
+
+[node name="AmmoPanel" type="TextureRect" parent="GameUI" unique_id=656991063]
+anchors_preset = -1
+anchor_left = 0.43100002
+anchor_right = 0.564
+anchor_bottom = 0.120000005
+offset_left = -48.512024
+offset_right = 54.271973
+offset_bottom = 0.23999786
+grow_horizontal = 2
+pivot_offset = Vector2(79, 39)
+size_flags_horizontal = 8
+texture = ExtResource("1_1pwbc")
+expand_mode = 1
+
+[node name="TrayBg" type="HBoxContainer" parent="GameUI/AmmoPanel" unique_id=1022322920]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.192
+anchor_right = 0.82400006
+anchor_bottom = 0.82100004
+offset_left = -47.007168
+offset_top = 0.024000168
+offset_right = 49.00882
+offset_bottom = 0.961998
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(52, 25)
+alignment = 1
+
+[node name="ammo" type="TextureRect" parent="GameUI/AmmoPanel/TrayBg" unique_id=479254261]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_76cw8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ammo2" type="TextureRect" parent="GameUI/AmmoPanel/TrayBg" unique_id=1092354498]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_76cw8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ammo3" type="TextureRect" parent="GameUI/AmmoPanel/TrayBg" unique_id=270678706]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_76cw8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ammo4" type="TextureRect" parent="GameUI/AmmoPanel/TrayBg" unique_id=1750212052]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_76cw8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WeaponLayer" type="Control" parent="GameUI" unique_id=2086521443]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerHand" type="Control" parent="GameUI/WeaponLayer" unique_id=1124863230]
+layout_mode = 1
+anchor_top = 0.634
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.16799927
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/PlayerHand" unique_id=231876990]
+position = Vector2(940, 109.999985)
+scale = Vector2(0.24674489, 0.2467449)
+sprite_frames = SubResource("SpriteFrames_m00rq")
+animation = &"shoot"
+
+[node name="TableShotgun" type="Sprite2D" parent="GameUI/WeaponLayer" unique_id=1045689173]
+position = Vector2(560.99994, 476.00006)
+scale = Vector2(0.12890624, 0.12890625)
+texture = ExtResource("7_m00rq")
+
+[node name="EnemyHand" type="Control" parent="GameUI/WeaponLayer" unique_id=909286102]
+layout_mode = 1
+anchor_top = 0.127
+anchor_right = 0.998
+anchor_bottom = 0.5
+offset_top = -0.29600525
+offset_right = 0.30395508
+
+[node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/EnemyHand" unique_id=359885908]
+sprite_frames = SubResource("SpriteFrames_brv20")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7iyelh2ek7e7"]
+[gd_scene format=3 uid="uid://7iyelh2ek7e7"]
 
 [ext_resource type="Texture2D" uid="uid://bdirp5lwe0wwm" path="res://assets/sprites/menu/menu_background.png" id="1_glbon"]
 [ext_resource type="Script" uid="uid://cvmsoyq3moowo" path="res://scripts/main_menu.gd" id="1_nlkkf"]
@@ -19,7 +19,7 @@ fill = 1
 fill_from = Vector2(0.48623854, 0.013761468)
 fill_to = Vector2(0.5, 1)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1537450293]
 modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
 layout_mode = 3
 anchors_preset = 15
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nlkkf")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=161779412]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.98800004
@@ -40,11 +40,12 @@ offset_right = -0.22753906
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_glbon")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="DustParticles" type="CPUParticles2D" parent="Background"]
+[node name="DustParticles" type="CPUParticles2D" parent="Background" unique_id=947482505]
 position = Vector2(576, -8)
 amount = 50
 texture = ExtResource("3_8qtwp")
@@ -69,43 +70,23 @@ scale_amount_min = 0.0
 scale_amount_max = 0.1
 color = Color(1.635566, 1.635566, 1.635566, 0.42745098)
 
-[node name="MaskFace" type="Sprite2D" parent="."]
-position = Vector2(568, 264)
+[node name="MaskFace" type="Sprite2D" parent="." unique_id=1991386474]
+position = Vector2(576, 264)
 scale = Vector2(0.40625, 0.40625)
 texture = ExtResource("2_nlkkf")
 
-[node name="LampHanging" type="Sprite2D" parent="."]
-position = Vector2(568, 0)
+[node name="LampHanging" type="Sprite2D" parent="." unique_id=345741221]
+position = Vector2(577.00006, 0)
 scale = Vector2(0.06176757, 0.06176757)
 texture = ExtResource("3_qe12f")
 offset = Vector2(0, 906.62476)
 
-[node name="PointLight2D" type="PointLight2D" parent="LampHanging"]
+[node name="PointLight2D" type="PointLight2D" parent="LampHanging" unique_id=1057711817]
 position = Vector2(129.51752, 5237.376)
 scale = Vector2(121.422935, 163.668)
 texture = SubResource("GradientTexture2D_qe12f")
 
-[node name="btn_play" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.32900003
-anchor_top = 0.65900004
-anchor_right = 0.665
-anchor_bottom = 0.91
-offset_left = 0.3128662
-offset_top = -0.3040161
-offset_right = 0.46221924
-offset_bottom = 0.039978027
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(239, 112)
-disabled = true
-button_mask = 0
-texture_normal = ExtResource("4_8qtwp")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="btn_exit" type="TextureButton" parent="."]
+[node name="btn_exit" type="TextureButton" parent="." unique_id=1662464022]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.83000004
@@ -120,5 +101,15 @@ texture_normal = ExtResource("5_dy7ct")
 ignore_texture_size = true
 stretch_mode = 6
 
-[connection signal="pressed" from="btn_play" to="." method="_on_btn_play_pressed"]
+[node name="btn_play" type="TextureButton" parent="." unique_id=1626065868]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 440.0
+offset_right = 757.0
+offset_bottom = 593.0
+texture_normal = ExtResource("4_8qtwp")
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="pressed" from="btn_exit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="btn_play" to="." method="_on_btn_play_pressed"]

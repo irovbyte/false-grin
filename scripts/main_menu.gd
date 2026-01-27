@@ -26,9 +26,10 @@ func _process(delta):
 		else:
 			var target_energy = 1.0 + randf_range(-0.05, 0.05)
 			light.energy = move_toward(light.energy, target_energy, 0.1)
-
-func _on_btn_play_pressed():
-	print("Кнопка Играть")
-
+			
 func _on_btn_exit_pressed():
 	get_tree().quit()
+
+
+func _on_btn_play_pressed():
+	get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn")
