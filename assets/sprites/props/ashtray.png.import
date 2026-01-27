@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlavljuvdrytf"
-path="res://.godot/imported/d3a0e88012e649e2ac76802e483c0339_0_1769447701_6929.png-877dc5f990554caebdd3717a1b1197ad.ctex"
+uid="uid://ef2g4b0agvoa"
+path="res://.godot/imported/ashtray.png-aed2a2e126d54271db1dfd429f50b269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/d3a0e88012e649e2ac76802e483c0339_0_1769447701_6929.png"
-dest_files=["res://.godot/imported/d3a0e88012e649e2ac76802e483c0339_0_1769447701_6929.png-877dc5f990554caebdd3717a1b1197ad.ctex"]
+source_file="res://assets/sprites/props/ashtray.png"
+dest_files=["res://.godot/imported/ashtray.png-aed2a2e126d54271db1dfd429f50b269.ctex"]
 
 [params]
 

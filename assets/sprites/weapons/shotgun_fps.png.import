@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ef2g4b0agvoa"
-path="res://.godot/imported/photo-to-pixel_1_-removebg-preview.png-1453339bcffe42d4e4d9e5711d6945e5.ctex"
+uid="uid://ddg5khr2xt4ob"
+path="res://.godot/imported/shotgun_fps.png-5c5b6ffa9f849b7d1c9388050ead890e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/photo-to-pixel_1_-removebg-preview.png"
-dest_files=["res://.godot/imported/photo-to-pixel_1_-removebg-preview.png-1453339bcffe42d4e4d9e5711d6945e5.ctex"]
+source_file="res://assets/sprites/weapons/shotgun_fps.png"
+dest_files=["res://.godot/imported/shotgun_fps.png-5c5b6ffa9f849b7d1c9388050ead890e.ctex"]
 
 [params]
 

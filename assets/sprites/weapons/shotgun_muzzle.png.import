@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://usbudws7unhh"
-path="res://.godot/imported/photo-to-pixel-removebg-preview.png-499a625c7f3e49390551e77d98aa562d.ctex"
+uid="uid://c24vgh471qmcs"
+path="res://.godot/imported/shotgun_muzzle.png-83ab1fd983862cf95f183b4d4d7f3c89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/photo-to-pixel-removebg-preview.png"
-dest_files=["res://.godot/imported/photo-to-pixel-removebg-preview.png-499a625c7f3e49390551e77d98aa562d.ctex"]
+source_file="res://assets/sprites/weapons/shotgun_muzzle.png"
+dest_files=["res://.godot/imported/shotgun_muzzle.png-83ab1fd983862cf95f183b4d4d7f3c89.ctex"]
 
 [params]
 

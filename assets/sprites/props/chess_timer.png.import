@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c24vgh471qmcs"
-path="res://.godot/imported/a20e997ffb49459289948a8093dae984_0_1769449516_8848-removebg-preview(1).png-c6fd571f91fd673a7da7a50f0000c364.ctex"
+uid="uid://rf1xa1psmj3b"
+path="res://.godot/imported/chess_timer.png-f5be7fbcafa9ab8215fa22ba874bef2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/a20e997ffb49459289948a8093dae984_0_1769449516_8848-removebg-preview(1).png"
-dest_files=["res://.godot/imported/a20e997ffb49459289948a8093dae984_0_1769449516_8848-removebg-preview(1).png-c6fd571f91fd673a7da7a50f0000c364.ctex"]
+source_file="res://assets/sprites/props/chess_timer.png"
+dest_files=["res://.godot/imported/chess_timer.png-f5be7fbcafa9ab8215fa22ba874bef2f.ctex"]
 
 [params]
 
