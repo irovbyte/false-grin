@@ -13,9 +13,9 @@ func _input(event):
 func shoot():
 	var random_value = randf() * 100.0
 	
-	if random_value <= 20.0:  # 20% шанс
+	if random_value <= 40.0:  # 40% шанс
 		successful_shot()
-	else:  # 80% шанс
+	else:  # 60% шанс
 		misfire()
 
 func successful_shot():
