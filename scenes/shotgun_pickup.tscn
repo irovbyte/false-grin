@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dngkmpuvb47p"]
+
+[ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/5a26311bdcc04e5ba1a8861bc5cb785e_0_1769445699_7710.png" id="1_1nf3k"]
+
+[sub_resource type="GDScript" id="GDScript_sc7qp"]
+script/source = "extends Node2D
+
+var player = null
+
+func _ready():
+	player = get_tree().get_first_node_in_group(\"player\")
+	print(\"Нашли игрока: \", player)
+
+func _input(event):
+	if event.is_action_pressed(\"ui_accept\"):  # Enter или Пробел
+		print(\"=== НАЖАТА КЛАВИША ===\")
+		pickup_weapon()
+
+func pickup_weapon():
+	print(\"=== pickup_weapon вызвана ===\")
+	if player:
+		player.activate_weapon()
+		queue_free()
+	else:
+		print(\"ОШИБКА: player = null\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diaho"]
+size = Vector2(1458, 430.54544)
+
+[node name="shotgun_pickup" type="Node2D"]
+position = Vector2(491, 349)
+script = SubResource("GDScript_sc7qp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(25, -1)
+scale = Vector2(0.16666667, 0.171875)
+texture = ExtResource("1_1nf3k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(33.5, -6)
+scale = Vector2(0.16666667, 0.171875)
+shape = SubResource("RectangleShape2D_diaho")
