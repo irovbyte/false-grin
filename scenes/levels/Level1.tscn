@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bfo72fed0vqac" path="res://assets/sprites/menu/mask_face.png" id="2_lha2r"]
 [ext_resource type="Texture2D" uid="uid://d1m2f0as27gyp" path="res://assets/sprites/ui/player.png" id="3_68ib6"]
 [ext_resource type="Texture2D" uid="uid://dahfe3k1udutk" path="res://assets/sprites/ui/ammo_tray.png" id="5_76cw8"]
-[ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/shotgun_fps.png" id="6_m00rq"]
+[ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/normal_gun.png" id="6_m00rq"]
 [ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/sprites/ui/weapons/shotgun_side.png" id="7_m00rq"]
 
 [sub_resource type="GDScript" id="GDScript_gckpv"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3kxrfrip47dc"
-path="res://.godot/imported/pushka_fps.png-e81dfa29ce4b7fbc7f8f29d7435e17bf.ctex"
+uid="uid://r8ulyrck3igj"
+path="res://.godot/imported/shoot.png-d617819f875ac971cde45ed3471d1dba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/weapons/pushka_fps.png"
-dest_files=["res://.godot/imported/pushka_fps.png-e81dfa29ce4b7fbc7f8f29d7435e17bf.ctex"]
+source_file="res://assets/sprites/ui/weapons/shoot.png"
+dest_files=["res://.godot/imported/shoot.png-d617819f875ac971cde45ed3471d1dba.ctex"]
 
 [params]
 
