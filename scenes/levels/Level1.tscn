@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://r8ulyrck3igj" path="res://assets/sprites/ui/weapons/shoot.png" id="9_p5s5a"]
 [ext_resource type="Texture2D" uid="uid://bny5dkbuqxqpv" path="res://assets/sprites/ui/weapons/shoot_enemy.png" id="11_njy47"]
 [ext_resource type="Texture2D" uid="uid://hkm8aldia8vt" path="res://assets/sprites/ui/weapons/shoot_splash.png" id="12_j7nyf"]
+[ext_resource type="Texture2D" uid="uid://twvb1t10mw4t" path="res://assets/sprites/ui/panel_empty.png" id="14_kypp1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m00rq"]
 animations = [{
@@ -250,7 +251,7 @@ grow_vertical = 0
 position = Vector2(889.0654, 104.76613)
 scale = Vector2(0.5595494, 0.5595495)
 sprite_frames = SubResource("SpriteFrames_m00rq")
-animation = &"shoot_enemy"
+animation = &"aim_enemy"
 
 [node name="TableShotgun" type="Sprite2D" parent="GameUI/WeaponLayer" unique_id=1045689173]
 position = Vector2(560.99994, 476.00006)
@@ -267,3 +268,38 @@ offset_right = 0.30395508
 
 [node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/EnemyHand" unique_id=359885908]
 sprite_frames = SubResource("SpriteFrames_brv20")
+
+[node name="DamageOverlay" type="TextureRect" parent="GameUI" unique_id=894147270]
+offset_left = 270.0
+offset_top = 141.0
+offset_right = 884.0
+offset_bottom = 478.0
+
+[node name="TurnIndicator" type="TextureRect" parent="GameUI" unique_id=1926578815]
+offset_left = 270.0
+offset_top = 141.0
+offset_right = 884.0
+offset_bottom = 478.0
+
+[node name="MessageContainer" type="CenterContainer" parent="GameUI" unique_id=1435070970]
+anchors_preset = -1
+anchor_left = 0.22700001
+anchor_top = 0.20400001
+anchor_right = 0.763
+anchor_bottom = 0.82400006
+offset_left = -0.5040283
+offset_top = -0.19200134
+offset_right = 0.023986816
+offset_bottom = 0.047973633
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoPanel" type="TextureRect" parent="GameUI/MessageContainer" unique_id=1816871230]
+layout_mode = 2
+texture = ExtResource("14_kypp1")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GameUI/MessageContainer/InfoPanel" unique_id=395124825]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

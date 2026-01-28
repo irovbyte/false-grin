@@ -1,43 +1,85 @@
 extends Control
 
-# Сигналы: мы будем кричать Уровню, что игрок нажал кнопку
-signal shoot_enemy_pressed
+# --- СИГНАЛЫ ---
+signal shoot_mask_pressed
 signal shoot_self_pressed
+signal next_level_pressed
+signal menu_pressed
 
-# Ссылки на контейнеры с сердцами
-@onready var player_hp_container = $FrameLeft/PlayerHP
-@onready var enemy_hp_container = $FrameRight/EnemyHP
+# --- ССЫЛКИ НА УЗЛЫ ---
+@onready var damage_overlay = $DamageOverlay
+@onready var info_panel = $MessageContainer
+@onready var info_label = $MessageContainer/InfoPanel/InfoLabel
+@onready var turn_indicator = $TurnIndicator
 
-# Ссылки на кнопки
-@onready var btn_enemy = $BtnEnemy
-@onready var btn_self = $BtnSelf
+# Кнопки действий
+@onready var actions_container = $ActionsContainer
+@onready var btn_shoot_mask = $ActionsContainer/BtnShootMask
+@onready var btn_shoot_self = $ActionsContainer/BtnShootSelf
+
+# Кнопки финала
+@onready var result_container = $ResultContainer
+@onready var btn_next = $ResultContainer/BtnNext
+@onready var btn_menu = $ResultContainer/BtnMenu
+
+# --- ТЕКСТУРЫ (Загружаем заранее) ---
+var tex_turn_player = preload("res://assets/sprites/ui/label_turn_player.png")
+var tex_turn_mask = preload("res://assets/sprites/ui/label_turn_mask.png")
 
 func _ready():
-	# Подключаем нажатие кнопок к нашим сигналам
-	btn_enemy.pressed.connect(_on_btn_enemy_click)
-	btn_self.pressed.connect(_on_btn_self_click)
+	# Подключаем нажатия
+	btn_shoot_mask.pressed.connect(func(): emit_signal("shoot_mask_pressed"))
+	btn_shoot_self.pressed.connect(func(): emit_signal("shoot_self_pressed"))
+	btn_next.pressed.connect(func(): emit_signal("next_level_pressed"))
+	btn_menu.pressed.connect(func(): emit_signal("menu_pressed"))
+	
+	# Скрываем все лишнее на старте
+	reset_ui()
 
-func _on_btn_enemy_click():
-	# Передаем сигнал наверх (в Level1)
-	emit_signal("shoot_enemy_pressed")
+func reset_ui():
+	info_panel.hide()
+	turn_indicator.hide()
+	actions_container.hide()
+	result_container.hide()
+	damage_overlay.modulate.a = 0 # Прозрачный
 
-func _on_btn_self_click():
-	emit_signal("shoot_self_pressed")
+# --- ФУНКЦИИ ПОКАЗА ---
 
-# --- УНИВЕРСАЛЬНЫЕ ФУНКЦИИ ОБНОВЛЕНИЯ ---
+func show_message(text, duration=2.0):
+	info_panel.show()
+	info_label.text = text
+	await get_tree().create_timer(duration).timeout
+	info_panel.hide()
 
-# Обновить жизни Игрока
-func update_player_health(current_hp):
-	_update_hearts(player_hp_container, current_hp)
+func show_turn(is_player_turn):
+	turn_indicator.show()
+	if is_player_turn:
+		turn_indicator.texture = tex_turn_player
+		actions_container.show() # Показываем кнопки только игроку
+	else:
+		turn_indicator.texture = tex_turn_mask
+		actions_container.hide() # Прячем кнопки
 
-# Обновить жизни Врага
-func update_enemy_health(current_hp):
-	_update_hearts(enemy_hp_container, current_hp)
+func show_game_over(is_win):
+	actions_container.hide()
+	turn_indicator.hide()
+	result_container.show()
+	
+	if is_win:
+		btn_next.show()
+		btn_menu.show()
+		info_label.text = "ПОБЕДА"
+	else:
+		btn_next.hide() # Нельзя идти дальше, если умер
+		btn_menu.show()
+		info_label.text = "ТЫ ПОГИБ"
+	
+	info_panel.show()
 
-# Внутренняя функция: удаляет лишние сердца
-func _update_hearts(container, hp):
-	var hearts = container.get_children()
-	# Если сердец больше, чем жизней -> удаляем лишние
-	while hearts.size() > hp:
-		var h = hearts.pop_back() # Берем последнее
-		h.queue_free() # Удаляем
+# --- ЭФФЕКТЫ ---
+
+func flash_damage():
+	# Резкое появление черноты и плавное исчезновение
+	var tween = create_tween()
+	tween.tween_property(damage_overlay, "modulate:a", 1.0, 0.1) # Резко темно
+	tween.tween_property(damage_overlay, "modulate:a", 0.0, 2.0) # Медленно светлеет
