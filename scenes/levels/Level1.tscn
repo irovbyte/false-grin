@@ -1,23 +1,33 @@
 [gd_scene format=3 uid="uid://dtpln8te1f4jw"]
 
 [ext_resource type="Texture2D" uid="uid://355wsgj13pcn" path="res://assets/sprites/ui/side_frame.png" id="1_1pwbc"]
+[ext_resource type="Script" uid="uid://bvq4tybahigv5" path="res://scripts/level1.gd" id="1_n5pya"]
 [ext_resource type="Texture2D" uid="uid://dj1c8jvlclrag" path="res://assets/sprites/ui/heart_icon.png" id="2_j08sa"]
+[ext_resource type="Script" uid="uid://2ij1a58w53g6" path="res://scripts/game_ui.gd" id="2_kypp1"]
 [ext_resource type="Texture2D" uid="uid://bfo72fed0vqac" path="res://assets/sprites/menu/mask_face.png" id="2_lha2r"]
 [ext_resource type="Texture2D" uid="uid://d1m2f0as27gyp" path="res://assets/sprites/ui/player.png" id="3_68ib6"]
 [ext_resource type="Texture2D" uid="uid://dahfe3k1udutk" path="res://assets/sprites/ui/ammo_tray.png" id="5_76cw8"]
 [ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/normal_gun.png" id="6_m00rq"]
 [ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/sprites/ui/weapons/shotgun_side.png" id="7_m00rq"]
-
-[sub_resource type="GDScript" id="GDScript_gckpv"]
+[ext_resource type="Texture2D" uid="uid://3kxrfrip47dc" path="res://assets/sprites/ui/weapons/aim_enemy.png" id="8_ukjja"]
+[ext_resource type="Texture2D" uid="uid://r8ulyrck3igj" path="res://assets/sprites/ui/weapons/shoot.png" id="9_p5s5a"]
+[ext_resource type="Texture2D" uid="uid://bny5dkbuqxqpv" path="res://assets/sprites/ui/weapons/shoot_enemy.png" id="11_njy47"]
+[ext_resource type="Texture2D" uid="uid://hkm8aldia8vt" path="res://assets/sprites/ui/weapons/shoot_splash.png" id="12_j7nyf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m00rq"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ukjja")
+}],
 "loop": true,
 "name": &"aim_enemy",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_p5s5a")
+}],
 "loop": true,
 "name": &"aim_self",
 "speed": 5.0
@@ -30,18 +40,38 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ukjja")
+}],
 "loop": true,
-"name": &"shoot",
+"name": &"misfire_enemy",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_njy47")
+}],
+"loop": true,
+"name": &"shoot_enemy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_j7nyf")
+}],
+"loop": true,
+"name": &"shoot_self",
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_brv20"]
 
 [node name="Level1" type="Node2D" unique_id=751449340]
-script = SubResource("GDScript_gckpv")
+script = ExtResource("1_n5pya")
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=355615279]
+script = ExtResource("2_kypp1")
 
 [node name="FrameLeft" type="TextureRect" parent="GameUI" unique_id=1053934826]
 anchors_preset = -1
@@ -217,10 +247,10 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/PlayerHand" unique_id=231876990]
-position = Vector2(940, 109.999985)
-scale = Vector2(0.24674489, 0.2467449)
+position = Vector2(889.0654, 104.76613)
+scale = Vector2(0.5595494, 0.5595495)
 sprite_frames = SubResource("SpriteFrames_m00rq")
-animation = &"shoot"
+animation = &"shoot_enemy"
 
 [node name="TableShotgun" type="Sprite2D" parent="GameUI/WeaponLayer" unique_id=1045689173]
 position = Vector2(560.99994, 476.00006)
