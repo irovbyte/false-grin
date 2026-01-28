@@ -10,8 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/normal_gun.png" id="6_m00rq"]
 [ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/sprites/ui/weapons/shotgun_side.png" id="7_m00rq"]
 [ext_resource type="Texture2D" uid="uid://3kxrfrip47dc" path="res://assets/sprites/ui/weapons/aim_enemy.png" id="8_ukjja"]
+[ext_resource type="Texture2D" uid="uid://chcsnf1wxrdgy" path="res://assets/sprites/ui/btn_shoot_self.png" id="9_j7nyf"]
 [ext_resource type="Texture2D" uid="uid://r8ulyrck3igj" path="res://assets/sprites/ui/weapons/shoot.png" id="9_p5s5a"]
+[ext_resource type="Texture2D" uid="uid://dmen33ctdti7t" path="res://assets/sprites/ui/btn_shoot_mask.png" id="10_xbvxr"]
+[ext_resource type="Texture2D" uid="uid://daqw2143yv0dt" path="res://assets/sprites/ui/btn_next_level.png" id="11_bspq0"]
 [ext_resource type="Texture2D" uid="uid://bny5dkbuqxqpv" path="res://assets/sprites/ui/weapons/shoot_enemy.png" id="11_njy47"]
+[ext_resource type="Texture2D" uid="uid://drpioyuukqeed" path="res://assets/sprites/ui/btn_menu.png" id="12_dqba7"]
 [ext_resource type="Texture2D" uid="uid://hkm8aldia8vt" path="res://assets/sprites/ui/weapons/shoot_splash.png" id="12_j7nyf"]
 [ext_resource type="Texture2D" uid="uid://twvb1t10mw4t" path="res://assets/sprites/ui/panel_empty.png" id="14_kypp1"]
 
@@ -229,46 +233,6 @@ texture = ExtResource("5_76cw8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="WeaponLayer" type="Control" parent="GameUI" unique_id=2086521443]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PlayerHand" type="Control" parent="GameUI/WeaponLayer" unique_id=1124863230]
-layout_mode = 1
-anchor_top = 0.634
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.16799927
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/PlayerHand" unique_id=231876990]
-position = Vector2(889.0654, 104.76613)
-scale = Vector2(0.5595494, 0.5595495)
-sprite_frames = SubResource("SpriteFrames_m00rq")
-animation = &"aim_enemy"
-
-[node name="TableShotgun" type="Sprite2D" parent="GameUI/WeaponLayer" unique_id=1045689173]
-position = Vector2(560.99994, 476.00006)
-scale = Vector2(0.12890624, 0.12890625)
-texture = ExtResource("7_m00rq")
-
-[node name="EnemyHand" type="Control" parent="GameUI/WeaponLayer" unique_id=909286102]
-layout_mode = 1
-anchor_top = 0.127
-anchor_right = 0.998
-anchor_bottom = 0.5
-offset_top = -0.29600525
-offset_right = 0.30395508
-
-[node name="ShotgunSprite" type="AnimatedSprite2D" parent="GameUI/WeaponLayer/EnemyHand" unique_id=359885908]
-sprite_frames = SubResource("SpriteFrames_brv20")
-
 [node name="DamageOverlay" type="TextureRect" parent="GameUI" unique_id=894147270]
 offset_left = 270.0
 offset_top = 141.0
@@ -295,11 +259,110 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InfoPanel" type="TextureRect" parent="GameUI/MessageContainer" unique_id=1816871230]
+clip_contents = true
+custom_minimum_size = Vector2(363.59, 234.825)
 layout_mode = 2
 texture = ExtResource("14_kypp1")
-stretch_mode = 3
+expand_mode = 1
 
-[node name="Label" type="Label" parent="GameUI/MessageContainer/InfoPanel" unique_id=395124825]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="InfoLabel" type="Label" parent="GameUI/MessageContainer/InfoPanel" unique_id=395124825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 99.0
+offset_top = 117.0
+offset_right = -102.80499
+offset_bottom = -154.89499
+grow_horizontal = 2
+grow_vertical = 2
+text = "ТЕСТ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionsContainer" type="HBoxContainer" parent="GameUI" unique_id=1617391005]
+offset_left = 424.0
+offset_top = 361.0
+offset_right = 722.0
+offset_bottom = 419.0
+
+[node name="BtnShootSelf" type="TextureButton" parent="GameUI/ActionsContainer" unique_id=235299411]
+custom_minimum_size = Vector2(137.985, 0)
+layout_mode = 2
+texture_normal = ExtResource("9_j7nyf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BtnShootMask" type="TextureButton" parent="GameUI/ActionsContainer" unique_id=1948103753]
+custom_minimum_size = Vector2(149.42, 0)
+layout_mode = 2
+texture_normal = ExtResource("10_xbvxr")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ResultContainer" type="VBoxContainer" parent="GameUI" unique_id=642048188]
+anchors_preset = -1
+anchor_left = 0.33600003
+anchor_top = 0.333
+anchor_right = 0.785
+anchor_bottom = 0.71900004
+offset_left = 44.92798
+offset_top = 7.2160034
+offset_right = -185.32
+offset_bottom = -21.912018
+
+[node name="BtnNext" type="TextureButton" parent="GameUI/ResultContainer" unique_id=1164470098]
+visible = false
+custom_minimum_size = Vector2(0, 102.425)
+layout_mode = 2
+texture_normal = ExtResource("11_bspq0")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="BtnMenu" type="TextureButton" parent="GameUI/ResultContainer" unique_id=543230397]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("12_dqba7")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="WeaponLayer" type="Control" parent="." unique_id=2086521443]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerHand" type="Control" parent="WeaponLayer" unique_id=1124863230]
+layout_mode = 1
+anchor_top = 0.634
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.16799927
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ShotgunSprite" type="AnimatedSprite2D" parent="WeaponLayer/PlayerHand" unique_id=231876990]
+position = Vector2(889.0654, 104.76613)
+scale = Vector2(0.5595494, 0.5595495)
+sprite_frames = SubResource("SpriteFrames_m00rq")
+animation = &"aim_enemy"
+
+[node name="TableShotgun" type="Sprite2D" parent="WeaponLayer" unique_id=1045689173]
+position = Vector2(560.99994, 476.00006)
+scale = Vector2(0.12890624, 0.12890625)
+texture = ExtResource("7_m00rq")
+
+[node name="EnemyHand" type="Control" parent="WeaponLayer" unique_id=909286102]
+layout_mode = 1
+anchor_top = 0.127
+anchor_right = 0.998
+anchor_bottom = 0.5
+offset_top = -0.29600525
+offset_right = 0.30395508
+
+[node name="ShotgunSprite" type="AnimatedSprite2D" parent="WeaponLayer/EnemyHand" unique_id=359885908]
+sprite_frames = SubResource("SpriteFrames_brv20")
