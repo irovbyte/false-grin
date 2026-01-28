@@ -8,69 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://d1m2f0as27gyp" path="res://assets/sprites/ui/player.png" id="3_68ib6"]
 [ext_resource type="Texture2D" uid="uid://dahfe3k1udutk" path="res://assets/sprites/ui/ammo_tray.png" id="5_76cw8"]
 [ext_resource type="Texture2D" uid="uid://ddg5khr2xt4ob" path="res://assets/sprites/ui/weapons/normal_gun.png" id="6_m00rq"]
-[ext_resource type="Texture2D" uid="uid://dvrxhup8rpkp1" path="res://assets/sprites/ui/weapons/shotgun_side.png" id="7_m00rq"]
-[ext_resource type="Texture2D" uid="uid://3kxrfrip47dc" path="res://assets/sprites/ui/weapons/aim_enemy.png" id="8_ukjja"]
 [ext_resource type="Texture2D" uid="uid://chcsnf1wxrdgy" path="res://assets/sprites/ui/btn_shoot_self.png" id="9_j7nyf"]
-[ext_resource type="Texture2D" uid="uid://r8ulyrck3igj" path="res://assets/sprites/ui/weapons/shoot.png" id="9_p5s5a"]
 [ext_resource type="Texture2D" uid="uid://dmen33ctdti7t" path="res://assets/sprites/ui/btn_shoot_mask.png" id="10_xbvxr"]
 [ext_resource type="Texture2D" uid="uid://daqw2143yv0dt" path="res://assets/sprites/ui/btn_next_level.png" id="11_bspq0"]
 [ext_resource type="Texture2D" uid="uid://bny5dkbuqxqpv" path="res://assets/sprites/ui/weapons/shoot_enemy.png" id="11_njy47"]
 [ext_resource type="Texture2D" uid="uid://drpioyuukqeed" path="res://assets/sprites/ui/btn_menu.png" id="12_dqba7"]
-[ext_resource type="Texture2D" uid="uid://hkm8aldia8vt" path="res://assets/sprites/ui/weapons/shoot_splash.png" id="12_j7nyf"]
 [ext_resource type="Texture2D" uid="uid://twvb1t10mw4t" path="res://assets/sprites/ui/panel_empty.png" id="14_kypp1"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m00rq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_ukjja")
-}],
-"loop": true,
-"name": &"aim_enemy",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_p5s5a")
-}],
-"loop": true,
-"name": &"aim_self",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_m00rq")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_ukjja")
-}],
-"loop": true,
-"name": &"misfire_enemy",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_njy47")
-}],
-"loop": true,
-"name": &"shoot_enemy",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_j7nyf")
-}],
-"loop": true,
-"name": &"shoot_self",
-"speed": 10.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_brv20"]
+[ext_resource type="Texture2D" uid="uid://cglp51c6vk2xb" path="res://assets/enemys/mask1.png" id="19_ijoxy"]
+[ext_resource type="Texture2D" uid="uid://bdirp5lwe0wwm" path="res://assets/sprites/menu/menu_background.png" id="20_t2wor"]
+[ext_resource type="Texture2D" uid="uid://dlavljuvdrytf" path="res://assets/sprites/props/table.png" id="21_l40or"]
+[ext_resource type="Texture2D" uid="uid://dh50rrb4x8t8r" path="res://assets/sprites/props/chess_board_lvl1.png" id="22_hnhv5"]
+[ext_resource type="Texture2D" uid="uid://6jxlpjc26gf0" path="res://assets/sprites/props/glass_lvl1.png" id="23_86um8"]
+[ext_resource type="Texture2D" uid="uid://ckraq3l0cipwe" path="res://assets/sprites/props/sigarette_lvl1.png" id="24_hpass"]
+[ext_resource type="Texture2D" uid="uid://b34wmb37krw4v" path="res://assets/sprites/props/chess_timer_lvl1.png" id="25_srkvl"]
+[ext_resource type="Texture2D" uid="uid://dbb4tistdrdnm" path="res://assets/sprites/props/lamp_lvl1.png" id="26_pgakm"]
 
 [node name="Level1" type="Node2D" unique_id=751449340]
 script = ExtResource("1_n5pya")
@@ -246,6 +197,7 @@ offset_right = 884.0
 offset_bottom = 478.0
 
 [node name="MessageContainer" type="CenterContainer" parent="GameUI" unique_id=1435070970]
+visible = false
 anchors_preset = -1
 anchor_left = 0.22700001
 anchor_top = 0.20400001
@@ -281,6 +233,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ActionsContainer" type="HBoxContainer" parent="GameUI" unique_id=1617391005]
+visible = false
 offset_left = 424.0
 offset_top = 361.0
 offset_right = 722.0
@@ -301,6 +254,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ResultContainer" type="VBoxContainer" parent="GameUI" unique_id=642048188]
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.33600003
 anchor_top = 0.333
@@ -328,6 +282,7 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="WeaponLayer" type="Control" parent="." unique_id=2086521443]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,16 +300,17 @@ offset_top = 0.16799927
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ShotgunSprite" type="AnimatedSprite2D" parent="WeaponLayer/PlayerHand" unique_id=231876990]
-position = Vector2(889.0654, 104.76613)
-scale = Vector2(0.5595494, 0.5595495)
-sprite_frames = SubResource("SpriteFrames_m00rq")
-animation = &"aim_enemy"
+[node name="ShootEnemy" type="Sprite2D" parent="WeaponLayer/PlayerHand" unique_id=40199190]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(575, 417)
+texture = ExtResource("11_njy47")
 
-[node name="TableShotgun" type="Sprite2D" parent="WeaponLayer" unique_id=1045689173]
-position = Vector2(560.99994, 476.00006)
-scale = Vector2(0.12890624, 0.12890625)
-texture = ExtResource("7_m00rq")
+[node name="NormalGun" type="Sprite2D" parent="WeaponLayer/PlayerHand" unique_id=1978324228]
+z_index = 3
+position = Vector2(895, 521)
+scale = Vector2(0.43376067, 0.4337607)
+texture = ExtResource("6_m00rq")
 
 [node name="EnemyHand" type="Control" parent="WeaponLayer" unique_id=909286102]
 layout_mode = 1
@@ -364,5 +320,97 @@ anchor_bottom = 0.5
 offset_top = -0.29600525
 offset_right = 0.30395508
 
-[node name="ShotgunSprite" type="AnimatedSprite2D" parent="WeaponLayer/EnemyHand" unique_id=359885908]
-sprite_frames = SubResource("SpriteFrames_brv20")
+[node name="Parallax2D" type="Parallax2D" parent="WeaponLayer/EnemyHand" unique_id=2130085614]
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=1153407168]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+z_index = 2
+position = Vector2(403.00006, 414.29596)
+scale = Vector2(0.16556041, 0.17857142)
+texture = ExtResource("23_86um8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=827893758]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+z_index = 2
+position = Vector2(805.00006, 483.29596)
+scale = Vector2(0.1898148, 0.17474921)
+texture = ExtResource("24_hpass")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=675362214]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+z_index = 2
+position = Vector2(546.0001, 456.29596)
+scale = Vector2(0.17447922, 0.12634274)
+texture = ExtResource("22_hnhv5")
+offset = Vector2(-2, -16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=1310957481]
+modulate = Color(1.7136636, 1.7136636, 1.7136636, 1)
+position = Vector2(555.00006, -432.70392)
+scale = Vector2(0.47093025, 0.53580725)
+texture = ExtResource("20_t2wor")
+
+[node name="Sprite2D5" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=1384672649]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+z_index = 2
+position = Vector2(792.56256, 397.5913)
+scale = Vector2(0.17635089, 0.19393617)
+
+[node name="Sprite2D6" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=1997219178]
+modulate = Color(0.5194127, 0.5194127, 0.5194127, 1)
+z_index = 1
+position = Vector2(578, 612.296)
+scale = Vector2(0.81315106, 0.84765613)
+texture = ExtResource("21_l40or")
+
+[node name="Sprite2D7" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=992990354]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+z_index = 2
+position = Vector2(792.56256, 397.5913)
+scale = Vector2(0.17635089, 0.19393617)
+texture = ExtResource("26_pgakm")
+
+[node name="Sprite2D8" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=485856661]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+z_index = 2
+position = Vector2(384, 431.296)
+scale = Vector2(0.18717448, 0.20738555)
+texture = ExtResource("26_pgakm")
+
+[node name="Sprite2D9" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=2051381211]
+modulate = Color(0.49016845, 0.5389713, 1.271014, 0.7137255)
+z_index = 2
+position = Vector2(669.81195, 452.93317)
+scale = Vector2(0.065349124, 0.0690679)
+texture = ExtResource("25_srkvl")
+
+[node name="Sprite2D10" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=535695129]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+z_index = 2
+position = Vector2(326.00006, 434.23346)
+scale = Vector2(0.16666664, 0.1475752)
+texture = ExtResource("24_hpass")
+flip_h = true
+
+[node name="Sprite2D11" type="Sprite2D" parent="WeaponLayer/EnemyHand/Parallax2D" unique_id=428955430]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+z_index = 2
+position = Vector2(730.00006, 450.29596)
+scale = Vector2(0.18952778, 0.21428569)
+texture = ExtResource("23_86um8")
+
+[node name="MaskEnemy" type="Sprite2D" parent="WeaponLayer/EnemyHand" unique_id=650406359]
+position = Vector2(575, 232.29599)
+scale = Vector2(0.23825014, 0.23825012)
+texture = ExtResource("19_ijoxy")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=994489121]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=275945043]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1284938593]
+modulate = Color(1.7136636, 1.7136636, 1.7136636, 1)
+position = Vector2(564, -439.00003)
+scale = Vector2(0.47093025, 0.5358073)
+texture = ExtResource("20_t2wor")

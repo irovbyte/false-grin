@@ -1,10 +1,15 @@
 extends Node2D
 
-# --- ВАЖНЫЕ ИСПРАВЛЕНИЯ ПУТЕЙ ---
-@onready var shotgun = $GameUI/WeaponLayer/PlayerHand/ShotgunSprite
+# ССЫЛКИ ПО ТВОЕМУ ДЕРЕВУ СЦЕНЫ
 @onready var ui = $GameUI
+@onready var shotgun = $GameUI/WeaponLayer/PlayerHand/ShotgunSprite
+@onready var mask_sprite = $WeaponLayer/EnemyHand/MaskEnemy
 
-# --- ПЕРЕМЕННЫЕ ИГРЫ ---
+# ТВОИ ТЕКСТУРЫ ВЫСТРЕЛА
+var tex_player_shoot = preload("res://assets/sprites/ui/weapons/shoot_enemy.png")
+var tex_mask_shoot = preload("res://assets/sprites/ui/weapons/shotgun_muzzle_splash.png")
+var tex_idle = preload("res://assets/sprites/ui/weapons/normal_gun.png")
+
 var player_hp = 2
 var mask_hp = 2
 var magazine = [] 
@@ -12,124 +17,87 @@ var current_round_index = 0
 
 func _ready():
 	randomize()
+	# Проверка на наличие пушки, чтобы не вылетало
+	if shotgun == null:
+		shotgun = find_child("ShotgunSprite", true, false)
 	
-	# Подключение кнопок интерфейса к функциям уровня
 	ui.shoot_mask_pressed.connect(_on_shoot_mask)
 	ui.shoot_self_pressed.connect(_on_shoot_self)
-	
-	# Кнопки финала
-	ui.next_level_pressed.connect(func(): print("Переход на уровень 2..."))
 	ui.menu_pressed.connect(func(): get_tree().reload_current_scene())
-
+	
 	start_game_sequence()
 
-# --- СЦЕНАРИЙ ИГРЫ ---
+# УПРОЩЕННЫЙ ВЫСТРЕЛ
+func perform_shot(to_enemy: bool):
+	if shotgun == null: return
+	
+	ui.set_permanent_text("ВЫСТРЕЛ...")
+	ui.btn_shoot_mask.disabled = true
+	ui.btn_shoot_self.disabled = true
+
+	var is_live = get_bullet()
+	
+	if is_live:
+		# Меняем картинку в зависимости от того, кто стреляет
+		if to_enemy:
+			shotgun.texture = tex_player_shoot
+			mask_hp -= 1
+			# Маска краснеет при попадании
+			var t = create_tween()
+			t.tween_property(mask_sprite, "modulate", Color.RED, 0.1)
+			t.tween_property(mask_sprite, "modulate", Color.WHITE, 0.1)
+		else:
+			shotgun.texture = tex_mask_shoot
+			player_hp -= 1
+			ui.flash_damage()
+	else:
+		print("Осечка!")
+
+	await get_tree().create_timer(0.4).timeout
+	shotgun.texture = tex_idle # Возвращаем обычный вид
+	ui.update_hp(player_hp, mask_hp)
+	
+	if not check_game_end():
+		# Логика ходов
+		if not to_enemy and not is_live:
+			start_turn(true) # Холостой в себя — снова твой ход
+		else:
+			start_turn(not to_enemy if is_live else false)
+
+func _on_shoot_mask(): perform_shot(true)
+func _on_shoot_self(): perform_shot(false)
 
 func start_game_sequence():
-	await ui.show_message("УРОВЕНЬ 1", 2.0)
-	
-	# Генерируем патроны
+	player_hp = 2
+	mask_hp = 2
+	ui.update_hp(player_hp, mask_hp)
 	magazine = [true, true, false, false]
 	magazine.shuffle()
 	current_round_index = 0
-	
-	print("Патроны в очереди: ", magazine)
-	await ui.show_message("ЗАРЯДКА: 2 БОЕВЫХ, 2 ХОЛОСТЫХ", 3.0)
-	
-	# Кто ходит первый
+	await ui.show_message("ЗАРЯДКА...", 1.5)
 	start_turn(randf() > 0.5)
 
 func start_turn(is_player):
 	if check_game_end(): return
-	
-	# Если патроны кончились
 	if current_round_index >= magazine.size():
-		await ui.show_message("ПАТРОНЫ КОНЧИЛИСЬ...", 2.0)
 		start_game_sequence()
 		return
 
 	ui.show_turn(is_player)
-	
 	if is_player:
-		ui.set_permanent_text("ВЫБЕРИ ЦЕЛЬ") # Надпись висит постоянно
-		ui.btn_shoot_mask.disabled = false
-		ui.btn_shoot_self.disabled = false
+		ui.set_permanent_text("ТВОЙ ВЫБОР")
 	else:
-		ui.set_permanent_text("ХОД МАСКИ...") # Надпись висит пока маска думает
-		ui.btn_shoot_mask.disabled = true
-		ui.btn_shoot_self.disabled = true
-		await get_tree().create_timer(1.5).timeout 
-		ai_make_choice()
-
-# --- ЛОГИКА ИГРОКА ---
-
-func _on_shoot_mask():
-	ui.hide_message() # Убираем текст при нажатии
-	disable_buttons()
-	
-	shotgun.play("aim_enemy")
-	await get_tree().create_timer(0.5).timeout
-	
-	var is_live = get_bullet() 
-	if is_live:
-		shotgun.play("shoot_enemy")
-		mask_hp -= 1
-	else:
-		shotgun.play("misfire_enemy")
-	
-	await shotgun.animation_finished
-	shotgun.play("idle")
-	start_turn(false) # Ход переходит к маске
-
-func _on_shoot_self():
-	ui.hide_message() # Убираем текст при нажатии
-	disable_buttons()
-	
-	shotgun.play("aim_self")
-	await get_tree().create_timer(0.5).timeout
-	
-	var is_live = get_bullet()
-	if is_live:
-		shotgun.play("shoot_self")
-		ui.flash_damage()
-		player_hp -= 1
-		await shotgun.animation_finished
-		shotgun.play("idle")
-		start_turn(false) # Боевой в себя -> переход хода
-	else:
-		# ХОЛОСТОЙ В СЕБЯ = ДОП ХОД
-		await shotgun.animation_finished
-		shotgun.play("idle")
-		start_turn(true) # Снова ход игрока
-
-# --- ЛОГИКА МАСКИ (ИИ) ---
-
-func ai_make_choice():
-	var shoot_player = randf() > 0.5
-	var is_live = get_bullet()
-	
-	if shoot_player:
-		if is_live:
-			ui.flash_damage()
-			player_hp -= 1
-		start_turn(true)
-	else:
-		if is_live:
-			mask_hp -= 1
-			start_turn(true)
-		else:
-			start_turn(false) # Маска выстрелила в себя холостым -> ходит снова
-
-# --- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ---
+		ui.set_permanent_text("МАСКА ДУМАЕТ...")
+		await get_tree().create_timer(1.2).timeout 
+		# Маска стреляет либо в тебя (70%), либо в себя (30%)
+		perform_shot(randf() > 0.7)
 
 func get_bullet():
-	var b = magazine[current_round_index]
-	current_round_index += 1
-	return b
-
-func disable_buttons():
-	ui.btn_shoot_mask.disabled = true
-	ui.btn_shoot_self.disabled = true
+	if current_round_index < magazine.size():
+		var b = magazine[current_round_index]
+		current_round_index += 1
+		return b
+	return false
 
 func check_game_end():
 	if player_hp <= 0:
