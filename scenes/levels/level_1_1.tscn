@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://k44a7xesl26n"]
+
+[ext_resource type="Texture2D" uid="uid://bdirp5lwe0wwm" path="res://assets/sprites/menu/menu_background.png" id="1_b37pa"]
+[ext_resource type="Texture2D" uid="uid://dlavljuvdrytf" path="res://assets/sprites/props/table.png" id="2_kri6t"]
+[ext_resource type="Texture2D" uid="uid://dh50rrb4x8t8r" path="res://assets/sprites/props/chess_board_lvl1.png" id="3_uu7xq"]
+[ext_resource type="Texture2D" uid="uid://6jxlpjc26gf0" path="res://assets/sprites/props/glass_lvl1.png" id="4_10qtb"]
+[ext_resource type="Texture2D" uid="uid://ckraq3l0cipwe" path="res://assets/sprites/props/sigarette_lvl1.png" id="5_xcq78"]
+[ext_resource type="Texture2D" uid="uid://b34wmb37krw4v" path="res://assets/sprites/props/chess_timer_lvl1.png" id="6_tyxso"]
+[ext_resource type="Texture2D" uid="uid://dbb4tistdrdnm" path="res://assets/sprites/props/lamp_lvl1.png" id="7_014xt"]
+
+[node name="level1_1" type="Node2D" unique_id=1432113012]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1355103423]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=763414927]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1591328166]
+modulate = Color(1.7136636, 1.7136636, 1.7136636, 1)
+position = Vector2(577, 338.5)
+scale = Vector2(0.47093025, 0.5358073)
+texture = ExtResource("1_b37pa")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=573685369]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=2001276283]
+modulate = Color(0.5194127, 0.5194127, 0.5194127, 1)
+position = Vector2(597, 619)
+scale = Vector2(0.81315106, 0.84765625)
+texture = ExtResource("2_kri6t")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1002782535]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1061777759]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+position = Vector2(584.00006, 459.00003)
+scale = Vector2(0.17447922, 0.12634276)
+texture = ExtResource("3_uu7xq")
+offset = Vector2(-2, -16)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=983909029]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=1360784237]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+position = Vector2(768, 453)
+scale = Vector2(0.18952778, 0.21428572)
+texture = ExtResource("4_10qtb")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2000038597]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=321836882]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+position = Vector2(832, 453.00003)
+scale = Vector2(0.1898148, 0.17474923)
+texture = ExtResource("5_xcq78")
+flip_h = true
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground" unique_id=289882311]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6" unique_id=448183070]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+position = Vector2(441, 417)
+scale = Vector2(0.16556041, 0.17857143)
+texture = ExtResource("4_10qtb")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1438992381]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7" unique_id=1470511132]
+modulate = Color(0.70980394, 0.7411765, 0.9098039, 0.78431374)
+position = Vector2(353, 403.9375)
+scale = Vector2(0.16666664, 0.14757521)
+texture = ExtResource("5_xcq78")
+flip_h = true
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground" unique_id=306168101]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer8" unique_id=529044633]
+modulate = Color(0.49016845, 0.5389713, 1.271014, 0.7137255)
+position = Vector2(696.8119, 422.63724)
+scale = Vector2(0.065349124, 0.06906791)
+texture = ExtResource("6_tyxso")
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1791248670]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer9" unique_id=1662248405]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+position = Vector2(326, 407)
+scale = Vector2(0.18717448, 0.20738558)
+texture = ExtResource("7_014xt")
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1142870099]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer10" unique_id=1767661724]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+position = Vector2(819.5625, 367.29535)
+scale = Vector2(0.17635089, 0.1939362)
+texture = ExtResource("7_014xt")
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground" unique_id=431628648]
+position = Vector2(11, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer11" unique_id=1430962468]
+modulate = Color(0.9343507, 1.0145503, 2.3422987, 1)
+position = Vector2(819.5625, 367.29535)
+scale = Vector2(0.17635089, 0.1939362)
